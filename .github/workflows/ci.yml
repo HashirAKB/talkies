@@ -1,0 +1,47 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm test
+
+  # A real take of the public TodoMVC example: browser, recording, dead-air cut, assembly and review.
+  # Silent (--no-voice) so CI needs no API key; the video and contact sheet are uploaded as artifacts.
+  example:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - run: npm ci
+      - run: npx playwright-core install --with-deps chromium ffmpeg
+      - run: node bin/talkies.mjs check --dir examples/todomvc --no-voice
+      - run: node bin/talkies.mjs take --dir examples/todomvc --no-voice
+      - uses: actions/upload-artifact@v4
+        with:
+          name: todomvc-take
+          path: |
+            examples/todomvc/out/final.mp4
+            examples/todomvc/out/sheet.png
