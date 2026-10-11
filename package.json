@@ -1,0 +1,49 @@
+{
+  "name": "talkies",
+  "version": "0.1.0",
+  "description": "Narrated product demo videos of web apps, as code. Playwright scenes + automatic dead-air cutting + AI voiceover, muxed with ffmpeg into one synced MP4.",
+  "keywords": [
+    "playwright",
+    "demo",
+    "video",
+    "screencast",
+    "text-to-speech",
+    "ffmpeg",
+    "voiceover",
+    "walkthrough",
+    "claude-code",
+    "ai-agents"
+  ],
+  "homepage": "https://github.com/HashirAKB/talkies#readme",
+  "bugs": "https://github.com/HashirAKB/talkies/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HashirAKB/talkies.git"
+  },
+  "license": "MIT",
+  "author": "HashirAKB (https://github.com/HashirAKB)",
+  "type": "module",
+  "bin": {
+    "talkies": "bin/talkies.mjs"
+  },
+  "exports": {
+    ".": "./src/index.mjs"
+  },
+  "files": [
+    "bin",
+    "src",
+    "templates",
+    "skills",
+    "docs"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test \"test/*.test.mjs\"",
+    "example": "node bin/talkies.mjs take --dir examples/todomvc --no-voice"
+  },
+  "dependencies": {
+    "playwright-core": "1.64.0"
+  }
+}
