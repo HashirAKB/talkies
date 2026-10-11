@@ -1,0 +1,23 @@
+{
+  "baseUrl": "https://demo.playwright.dev/todomvc/",
+  "browserChannel": "chromium",
+  "viewport": { "width": 1280, "height": 720 },
+  "voice": { "provider": "gemini", "voice": "Kore" },
+  "scenes": [
+    {
+      "id": "add",
+      "file": "scenes/01-add.js",
+      "narration": "This is TodoMVC. Let's plan a demo day: three tasks, typed in one after another."
+    },
+    {
+      "id": "complete",
+      "file": "scenes/02-complete.js",
+      "narration": "Tick off what's done, and the counter keeps up."
+    },
+    {
+      "id": "filter",
+      "file": "scenes/03-filter.js",
+      "narration": "Filter to what's still active, and that's everything left for today."
+    }
+  ]
+}
