@@ -1,0 +1,14 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "envFile": "../my-app/.env",
+  "browserChannel": "chrome",
+  "viewport": { "width": 1280, "height": 720 },
+  "voice": { "provider": "gemini", "voice": "Kore" },
+  "scenes": [
+    {
+      "id": "open",
+      "file": "scenes/01-open.js",
+      "narration": "Here is the app we are going to walk through."
+    }
+  ]
+}
